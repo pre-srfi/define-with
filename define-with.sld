@@ -15,9 +15,8 @@
 
     (define (declaration-ref name which)
       (let ((pair (assoc name declarations)))
-        (if (not pair) '()
-            (let ((pair (assoc which (cdr pair))))
-              (and pair (cdr pair))))))
+        (and pair (let ((pair (assoc which (cdr pair))))
+                    (and pair (cdr pair))))))
 
     (define-syntax with
       (syntax-rules ()
